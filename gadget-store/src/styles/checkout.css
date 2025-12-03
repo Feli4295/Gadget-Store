@@ -1,0 +1,144 @@
+.checkout-section {
+  padding: 60px 0 100px;
+}
+
+.checkout-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 40px;
+}
+
+.checkout-title span {
+  background: linear-gradient(90deg, #00d4ff, #8a2be2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LAYOUT */
+.checkout-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* FORM SECTION */
+.checkout-form {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.section-head {
+  margin-bottom: 18px;
+  font-size: 1.2rem;
+}
+
+.checkout-form input,
+.checkout-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  outline: none;
+}
+
+.checkout-form textarea {
+  height: 100px;
+  resize: none;
+}
+
+/* PAYMENT OPTIONS */
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+.payment-options input {
+  margin-right: 10px;
+}
+
+/* BUTTON */
+.place-order-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(90deg, #00d4ff, #8a2be2);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s ease;
+}
+
+.place-order-btn:hover {
+  opacity: 0.85;
+}
+
+/* ORDER SUMMARY */
+.order-summary {
+  background: rgba(255,255,255,0.05);
+  padding: 30px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.summary-item {
+  display: flex;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.summary-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.summary-price {
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.summary-total {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+}
+
+/* EMPTY */
+.empty {
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 900px) {
+  .checkout-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 500px) {
+  .summary-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .summary-item img {
+    margin-bottom: 10px;
+  }
+}

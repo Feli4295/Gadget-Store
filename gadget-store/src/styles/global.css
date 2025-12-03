@@ -1,0 +1,182 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BODY SETTINGS */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0d0d0d;
+  color: #ffffff;
+  /* IMPROVEMENT: Changed from overflow-x: hidden to overflow-x: clip for broader support and clarity */
+  overflow-x: clip; 
+  /* IMPROVEMENT: Added min-height and display flex for better mobile vertical sizing control, especially on devices with dynamic address bars */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADINGS */
+h1, h2, h3, h4 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+/* IMAGE SETTINGS */
+img {
+  max-width: 100%;
+  display: block;
+  /* IMPROVEMENT: Added height: auto to prevent aspect ratio distortion when max-width is applied */
+  height: auto; 
+}
+
+/* SECTION SPACING */
+section {
+  /* REFINEMENT: Changed from 8% to a mix of fixed and fluid units for more predictable horizontal padding on larger screens */
+  padding: 70px clamp(20px, 8vw, 120px); 
+}
+
+/* SMOOTH SCROLLING */
+html {
+  scroll-behavior: smooth;
+}
+
+/* SCROLLBAR FUTURISTIC (optional but beautiful) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d4ff, #8a2be2);
+  border-radius: 10px;
+}
+
+/* GLOBAL BUTTON STYLE */
+.btn {
+  background: linear-gradient(90deg, #00d4ff, #8a2be2);
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  /* IMPROVEMENT: Added white-space: nowrap to prevent button text from wrapping onto multiple lines */
+  white-space: nowrap; 
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #00d4ff, 0 0 12px #8a2be2;
+}
+
+/* ============================
+    MOBILE RESPONSIVE IMPROVEMENTS
+    ============================ */
+
+/* IMPROVEMENT: Added a slightly larger breakpoint for smooth transition on tablets/small desktops */
+@media (max-width: 1024px) {
+  /* REFINEMENT: Using a fluid font size for better scaling */
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.5rem); 
+  }
+  h2 {
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+  }
+}
+
+@media (max-width: 900px) {
+  /* Removed h1/h2 definitions here, as they are covered by the 1024px clamp above */
+}
+
+@media (max-width: 768px) {
+  /* SECTION SPACING */
+  section {
+    /* REFINEMENT: Slightly adjusted padding for consistency */
+    padding: 50px 20px; 
+  }
+
+  /* GRID TO SINGLE COLUMN ON MOBILE */
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .product-grid {
+    grid-template-columns: 1fr !important;
+    gap: 25px !important;
+  }
+
+  /* HERO */
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .hero-container {
+    flex-direction: column-reverse !important;
+    text-align: center;
+    gap: 35px !important;
+  }
+
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .hero-text {
+    max-width: 100% !important;
+  }
+
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .hero-img {
+    width: 100% !important;
+    /* IMPROVEMENT: Centering the image if it doesn't take up full width (though width: 100% suggests it will) */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* CONTACT FORM */
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .contact-wrapper {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .contact-form input,
+  .contact-form textarea {
+    width: 100% !important;
+  }
+
+  /* FOOTER */
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+
+  /* NAVBAR */
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .desktop-nav {
+    display: none !important;
+  }
+
+  /* NOTE: !important is kept here as per your request, but is discouraged */
+  .mobile-menu-btn {
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Removed h1 definition here, as it is covered by the 1024px clamp above */
+
+  section {
+    /* REFINEMENT: Reduced horizontal padding for very small screens */
+    padding: 40px 15px; 
+  }
+
+  /* IMPROVEMENT: Targets the specific .btn class instead of the generic 'button' element to avoid styling non-primary buttons */
+  .btn { 
+    width: 100%;
+  }
+
+  /* If you have non-btn buttons, keep your original button selector: */
+  /* button {
+    width: 100%;
+  } */
+}
