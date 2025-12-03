@@ -23,6 +23,7 @@ export default function ProductDetails() {
         <div className="details-info">
 
           <h1 className="details-title">{product.name}</h1>
+          
 
           <p className="details-price">{product.price}</p>
 
