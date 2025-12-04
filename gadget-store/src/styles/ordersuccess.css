@@ -1,0 +1,72 @@
+.success-section {
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Added horizontal padding for the section to prevent box from touching screen edge */
+  padding: 0 4vw; 
+}
+
+.success-box {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.06);
+  /* Desktop/Tablet Padding */
+  padding: 40px; 
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  animation: pop 0.4s ease;
+}
+
+.success-box h1 {
+  /* Desktop/Tablet Font Size */
+  font-size: 2rem; 
+  margin-bottom: 10px;
+}
+
+.success-box p {
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
+
+.success-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00d4ff, #8a2be2);
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.success-btn:hover {
+  opacity: 0.85;
+}
+
+/* ➡️ OPTIMIZATION FOR SMALL PHONES */
+@media (max-width: 500px) {
+  .success-box {
+    /* Reduced fixed padding for tight screen sizes */
+    padding: 25px 20px; 
+  }
+
+  .success-box h1 {
+    /* Reduced font size for better fit and legibility */
+    font-size: 1.5rem; 
+  }
+
+  .success-box p {
+    /* Tighter margin */
+    margin-bottom: 20px;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

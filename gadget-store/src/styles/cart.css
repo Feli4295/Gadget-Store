@@ -28,6 +28,8 @@
   display: flex;
   flex-direction: column;
   gap: 28px;
+  /* Added horizontal padding for small screens */
+  padding: 0 4vw; 
 }
 
 /* CART ITEM */
@@ -134,19 +136,55 @@
   opacity: 0.85;
 }
 
-/* MOBILE */
+/* ==================================== */
+/* MOBILE RESPONSIVENESS REFINED */
+/* ==================================== */
 @media (max-width: 700px) {
+  .cart-section {
+    /* Reduced vertical padding for better screen usage */
+    padding: 40px 0 80px; 
+  }
+
+  .cart-title {
+    /* Reduced size for better fit on tablets/large phones */
+    font-size: 2.0rem; 
+    margin-bottom: 30px;
+  }
+  
   .cart-item {
     flex-direction: column;
     text-align: center;
+    /* Reduced vertical padding on the item itself */
+    padding: 15px; 
   }
 
   .cart-image {
     margin: auto;
   }
 
+  .cart-name {
+    font-size: 1.2rem;
+  }
+
   .qty-control {
     justify-content: center;
+  }
+
+  /* Summary box adjustments */
+  .cart-summary {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 450px) {
+  /* Further reduction for small phones */
+  .cart-title {
+    font-size: 1.8rem; 
+  }
+
+  .checkout-btn {
+    padding: 12px 20px;
+    font-size: 0.9rem;
   }
 }
 

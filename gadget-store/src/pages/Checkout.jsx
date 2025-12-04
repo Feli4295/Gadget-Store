@@ -1,135 +1,112 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
+// 1. ➡️ NEW IMPORT: Import the custom hook from its new file
+import { useOrders } from "../hooks/useOrders"; 
+import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 import "../styles/checkout.css";
 
 export default function Checkout() {
-  const { cart } = useContext(CartContext);
+  // Get cart state and setter from CartContext
+  const { cart, setCart } = useContext(CartContext);
+  
+  // 2. ➡️ NEW USAGE: Use the custom hook instead of useContext(OrderContext)
+  const { addOrder } = useOrders(); 
+  
+  const navigate = useNavigate();
 
-  const totalPrice = cart.reduce(
+  const [loading, setLoading] = useState(false);
+
+  const total = cart.reduce(
     (sum, item) => sum + item.price * item.qty,
     0
   );
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
-    payment: "card",
-  });
+  const handleOrder = () => {
+    if (cart.length === 0) return; // Prevent empty order submission
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setLoading(true);
+
+    // 4. SIMULATE API CALL
+    setTimeout(() => {
+      // 3. CREATE THE ORDER OBJECT (moved here for correct timing)
+      const newOrder = {
+        id: Date.now(),
+        items: cart,
+        total: total,
+        date: new Date().toLocaleString(),
+        status: "Pending",
+      };
+
+      // 5. SAVE the order using the context function
+      addOrder(newOrder); 
+      
+      // 6. CLEAR CART
+      setCart([]); 
+      localStorage.removeItem("cart"); 
+      
+      // Stop loading and navigate
+      setLoading(false); 
+      navigate("/success"); // Redirect to the success page
+    }, 2000);
   };
 
-  const placeOrder = () => {
-    alert("Order placed successfully!");
-  };
+  if (loading) return <Loader />;
 
   return (
     <section className="checkout-section">
-      <h2 className="checkout-title">
-        Checkout <span>Summary</span>
-      </h2>
 
-      <div className="checkout-wrapper">
+      <h2 className="checkout-title">Checkout</h2>
 
-        {/* LEFT SIDE — FORM */}
-        <div className="checkout-form">
+      <div className="checkout-container">
 
-          <h3 className="section-head">Customer Information</h3>
+        <div className="summary-box">
+          <h3>Order Summary</h3>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            value={formData.name}
-            onChange={handleChange}
-          />
+          {cart.map((item) => (
+            <div className="summary-item" key={item.id}>
+              <p className="sum-name">{item.name}</p>
+              <p className="sum-price">
+                ₦{(item.price * item.qty).toLocaleString()}
+              </p>
+            </div>
+          ))}
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            value={formData.email}
-            onChange={handleChange}
-          />
+          <hr />
 
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Phone Number"
-            value={formData.phone}
-            onChange={handleChange}
-          />
+          <div className="summary-total">
+            <h4>Total</h4>
+            <h4>₦{total.toLocaleString()}</h4>
+          </div>
+        </div>
 
-          <textarea
-            name="address"
-            placeholder="Delivery Address"
-            value={formData.address}
-            onChange={handleChange}
-          />
-
-          <h3 className="section-head">Payment Method</h3>
+        <div className="payment-box">
+          <h3>Select Payment Method</h3>
 
           <div className="payment-options">
-            <label>
-              <input
-                type="radio"
-                name="payment"
-                value="card"
-                checked={formData.payment === "card"}
-                onChange={handleChange}
-              />
-              Card Payment
+            <label className="payment-option">
+              <input type="radio" name="payment" defaultChecked />
+              <span>Pay on Delivery</span>
             </label>
 
-            <label>
-              <input
-                type="radio"
-                name="payment"
-                value="delivery"
-                checked={formData.payment === "delivery"}
-                onChange={handleChange}
-              />
-              Pay on Delivery
+            <label className="payment-option">
+              <input type="radio" name="payment" disabled />
+              <span>Bank Transfer</span>
+            </label>
+
+            <label className="payment-option">
+              <input type="radio" name="payment" disabled />
+              <span>Credit/Debit Card</span>
             </label>
           </div>
 
-          <button className="place-order-btn" onClick={placeOrder}>
+          <button className="place-order-btn" onClick={handleOrder} disabled={cart.length === 0}>
             Place Order
           </button>
         </div>
 
-        {/* RIGHT SIDE — ORDER SUMMARY */}
-        <div className="order-summary">
-          <h3 className="section-head">Order Summary</h3>
-
-          {cart.length === 0 ? (
-            <p className="empty">Your cart is empty.</p>
-          ) : (
-            cart.map((item) => (
-              <div key={item.id} className="summary-item">
-                <img src={item.img} alt={item.name} />
-
-                <div>
-                  <h4>{item.name}</h4>
-                  <p>Qty: {item.qty}</p>
-                  <p className="summary-price">
-                    ₦{(item.price * item.qty).toLocaleString()}
-                  </p>
-                </div>
-              </div>
-            ))
-          )}
-
-          <div className="summary-total">
-            <h3>Total:</h3>
-            <span>₦{totalPrice.toLocaleString()}</span>
-          </div>
-        </div>
-
       </div>
+
     </section>
   );
 }

@@ -5,7 +5,8 @@
 /* HEADER SECTION */
 .home-header {
   text-align: center;
-  padding: 40px 20px;
+  /* Use a viewport-relative unit for horizontal padding (vh) */
+  padding: 40px 4vw; 
 }
 
 .home-header h1 {
@@ -32,8 +33,11 @@
 
 .product-grid {
   display: grid;
-  gap: 20px;
-  padding: 20px;
+  /* Use viewport-relative units for gap for better mobile spacing */
+  gap: 4vw; 
+  /* Use viewport-relative units for padding */
+  padding: 20px 4vw; 
+  /* This setting is already excellent and handles responsiveness */
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
@@ -99,4 +103,55 @@
 }
 .cta-btn:hover {
   background: #f0f0f0;
+}
+
+/* ==================================== */
+/* RESPONSIVE ADJUSTMENTS FOR PHONES */
+/* ==================================== */
+@media (max-width: 600px) {
+  /* Adjust overall spacing for tight mobile screens */
+  .home {
+    padding-top: 40px;
+  }
+
+  /* Header adjustments */
+  .home-header {
+    padding: 30px 4vw;
+  }
+  
+  .home-header h1 {
+    /* Significantly reduced size for small phones */
+    font-size: 1.8rem; 
+  }
+
+  .home-header p {
+    font-size: 0.95rem;
+  }
+
+  /* Featured Section adjustments */
+  .featured-section {
+    margin-top: 30px;
+  }
+
+  .featured-section h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Product Grid adjustments */
+  .product-grid {
+     /* We can slightly tighten the minmax size for tiny devices */
+     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .product-card img {
+    /* Slightly smaller image size */
+    height: 150px; 
+  }
+
+  /* CTA adjustments */
+  .cta-section {
+    margin-top: 40px;
+    /* Tighter padding on the CTA box */
+    padding: 30px 4vw; 
+  }
 }

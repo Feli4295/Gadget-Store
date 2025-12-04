@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 40px;
+  /* Use percentage padding for general layout */
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -80,7 +81,7 @@
     0 0 35px rgba(138, 43, 226, 0.9);
 }
 
-/* ANIMATIONS */
+/* ANIMATIONS (Unchanged) */
 @keyframes slideUp {
   from {
     transform: translateY(40px);
@@ -103,11 +104,19 @@
   }
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN FOR TABLETS & MEDIUM SCREENS */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
     text-align: center;
+    /* Reduced vertical padding slightly for tablets */
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  /* Make sure content takes full width to prevent empty space */
+  .hero-content {
+    max-width: 100%;
   }
 
   .hero-image {
@@ -117,5 +126,36 @@
 
   .hero-title {
     font-size: 2.5rem;
+  }
+}
+
+/* RESPONSIVE DESIGN FOR SMALL PHONES (Under 600px) */
+@media (max-width: 600px) {
+  .hero {
+    /* Reduced padding for tight phone screens */
+    padding-top: 60px;
+    padding-bottom: 60px;
+    gap: 30px; /* Reduced space between content and image */
+  }
+
+  .hero-title {
+    /* Further reduction for small phones to avoid overflow */
+    font-size: 2.0rem; 
+  }
+
+  .hero-subtext {
+    /* Slight reduction for better fit */
+    font-size: 1.0rem; 
+  }
+
+  .hero-btn {
+    /* Slight reduction of button size */
+    font-size: 1.0rem;
+    padding: 12px 30px;
+  }
+
+  .hero-image {
+    /* Max width consistent with the tablet query */
+    max-width: 95%;
   }
 }

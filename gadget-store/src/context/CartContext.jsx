@@ -5,46 +5,40 @@ export const CartContext = createContext();
 export function CartProvider({ children }) {
   const [cart, setCart] = useState(() => {
     try {
-      const savedCart = localStorage.getItem("cart");
-      return savedCart ? JSON.parse(savedCart) : [];
-    } catch (error) {
-      console.error("Failed to load cart:", error);
+      const saved = localStorage.getItem("cart");
+      return saved
+        ? JSON.parse(saved).map(p => ({ ...p, qty: p.qty || 1 }))
+        : [];
+    } catch (err) {
+      console.error("Cart load error:", err);
       return [];
     }
   });
 
-  // Save cart to localStorage whenever it updates
   useEffect(() => {
     try {
       localStorage.setItem("cart", JSON.stringify(cart));
-    } catch (error) {
-      console.error("Failed to save cart:", error);
+    } catch (err) {
+      console.error("Cart save error:", err);
     }
   }, [cart]);
 
-  // Add product to cart
   const addToCart = (product) => {
     setCart((prev) => {
       const existing = prev.find((item) => item.id === product.id);
-
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, qty: item.qty + 1 }
-            : item
+          item.id === product.id ? { ...item, qty: item.qty + 1 } : item
         );
       }
-
       return [...prev, { ...product, qty: 1 }];
     });
   };
 
-  // Remove product from cart
   const removeFromCart = (id) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Update quantity
   const updateQuantity = (id, qty) => {
     setCart((prev) =>
       prev.map((item) =>
@@ -55,7 +49,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, updateQuantity }}
+      value={{ cart, setCart, addToCart, removeFromCart, updateQuantity }}
     >
       {children}
     </CartContext.Provider>

@@ -54,20 +54,47 @@
               0 0 35px rgba(138, 43, 226, 0.6);
 }
 
-/* MOBILE RESPONSIVENESS */
-@media (max-width: 600px) {
-  .products-hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-btn {
-    width: 90%;
-  }
-}
-/* PRODUCTS GRID */
+/* PRODUCTS GRID (Related Products) */
 .products-grid {
   display: grid;
   gap: 30px;
   padding: 40px 20px;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* ==================================== */
+/* MOBILE RESPONSIVENESS REFINED */
+/* ==================================== */
+@media (max-width: 600px) {
+  /* Hero Section Adjustments */
+  .products-hero {
+    /* Reduced vertical padding for better screen usage on phones */
+    padding: 60px 20px; 
+  }
+
+  .products-hero-content h1 {
+    font-size: 2rem;
+  }
+
+  /* Ensure paragraph text fits better on small screens */
+  .products-hero-content p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+  }
+
+  .hero-btn {
+    width: 90%;
+    /* Slightly reduced padding for the button */
+    padding: 10px 20px; 
+    font-size: 0.95rem;
+  }
+  
+  /* Products Grid Adjustments */
+  .products-grid {
+    /* Reduced padding and gap for related products section */
+    padding: 30px 4vw; 
+    gap: 20px;
+    /* Reduced minmax slightly to allow better fit on smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  }
 }

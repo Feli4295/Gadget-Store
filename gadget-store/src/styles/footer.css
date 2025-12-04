@@ -1,0 +1,35 @@
+/* Desktop Grid Container */
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* Original desktop layout */
+  gap: 40px;
+}
+
+/* Column Flex Structure */
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Mobile Responsiveness: Stacking Columns */
+@media (max-width: 768px) {
+  .footer-container {
+    /* Stack columns vertically on phones/tablets */
+    grid-template-columns: 1fr;
+    gap: 30px;
+    /* Center the entire block for better mobile reading */
+    text-align: center; 
+  }
+
+  .footer-col {
+    /* Ensure content inside columns is centered when stacked */
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Reduce top margin for tighter screen usage on mobile */
+  .footer {
+    margin-top: 30px; 
+  }
+}

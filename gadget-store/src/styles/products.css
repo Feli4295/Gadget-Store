@@ -19,7 +19,9 @@
 /* GRID */
 .products-grid {
   display: grid;
-  gap: 40px;
+  /* Reduced gap slightly for mobile presentation */
+  gap: 30px; 
+  /* Base setting is perfect */
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
@@ -79,7 +81,7 @@
   font-size: 0.9rem;
 }
 
-/* ANIMATION */
+/* ANIMATION (Unchanged) */
 @keyframes fadeUp {
   from {
     transform: translateY(20px);
@@ -88,5 +90,42 @@
   to {
     transform: translateY(0px);
     opacity: 1;
+  }
+}
+
+/* ==================================== */
+/* RESPONSIVE ADJUSTMENTS FOR PHONES */
+/* ==================================== */
+@media (max-width: 600px) {
+  .products-section {
+    /* Reduced vertical padding for better screen economy */
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
+  .products-title {
+    /* Reduced size for small mobile screens */
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .products-grid {
+     /* Reduced minmax size to 180px. This allows for two cards 
+        on larger phones (500px+) and still scales well to a single column. */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+
+  .product-card {
+    padding: 15px; /* Tighter padding on the card itself */
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+    margin-top: 10px;
+  }
+
+  .product-btn {
+    padding: 8px 0; /* Slightly smaller button padding */
   }
 }

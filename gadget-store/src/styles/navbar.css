@@ -1,8 +1,12 @@
+/* ==================================== */
+/* GLOBAL NAVBAR STYLES */
+/* ==================================== */
 .nav {
   width: 100%;
   position: sticky;
   top: 0;
   z-index: 1000;
+  /* Blur effect for modern transparency */
   backdrop-filter: blur(12px);
   background: rgba(15, 15, 15, 0.55);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -11,11 +15,21 @@
 .nav-container {
   max-width: 1400px;
   margin: auto;
+  /* Use percentage padding for fluid sides, but a slightly smaller percentage on mobile */
   padding: 18px 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+
+/* MOBILE ADJUSTMENT: Tighter Padding on Small Screens */
+@media (max-width: 600px) {
+  .nav-container {
+    /* Reduced horizontal padding for phones */
+    padding: 18px 4%;
+  }
+}
+
 
 /* LOGO */
 .nav-logo h2 {
@@ -25,6 +39,13 @@
   cursor: pointer;
 }
 
+/* MOBILE ADJUSTMENT: Logo Size */
+@media (max-width: 600px) {
+  .nav-logo h2 {
+    font-size: 1.4rem; /* Slightly smaller logo on phones */
+  }
+}
+
 .nav-logo span {
   background: linear-gradient(90deg, #00d4ff, #8a2be2);
   background-clip: text;
@@ -32,7 +53,10 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* NAV LINKS */
+
+/* ==================================== */
+/* NAV LINKS (Desktop) */
+/* ==================================== */
 .nav-links {
   list-style: none;
   display: flex;
@@ -52,7 +76,7 @@
   color: #00d4ff;
 }
 
-/* Neon underline hover */
+/* Neon underline hover (Unchanged) */
 .nav-links li a::after {
   content: "";
   width: 0%;
@@ -68,10 +92,14 @@
   width: 100%;
 }
 
-/* HAMBURGER MENU */
+
+/* ==================================== */
+/* HAMBURGER & MOBILE MENU */
+/* ==================================== */
 .hamburger {
   width: 30px;
   cursor: pointer;
+  /* Display FLEX by default for the mobile view trigger */
   display: none;
   flex-direction: column;
   gap: 6px;
@@ -85,7 +113,7 @@
   transition: 0.3s ease;
 }
 
-/* ANIMATION WHEN ACTIVE */
+/* ANIMATION WHEN ACTIVE (Unchanged) */
 .hamburger.open span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -98,8 +126,9 @@
   transform: translateY(-9px) rotate(-45deg);
 }
 
-/* MOBILE MENU */
-@media (max-width: 850px) {
+/* MOBILE MENU TRIGGER */
+/* Using 900px to catch tablets/larger phones where horizontal space is tight */
+@media (max-width: 900px) {
   .nav-links {
     position: absolute;
     top: 70px;
@@ -107,6 +136,7 @@
     height: 0;
     overflow: hidden;
     width: 100%;
+    /* Use a slightly darker background to help links stand out */
     background: rgba(15, 15, 15, 0.95);
     flex-direction: column;
     align-items: center;
@@ -115,7 +145,8 @@
   }
 
   .nav-links.open {
-    height: 200px;
+    /* Increased height slightly to accommodate the mobile cart link */
+    height: 250px;
     padding: 20px 0;
   }
 
@@ -124,7 +155,10 @@
   }
 }
 
-/* CART BADGE */
+
+/* ==================================== */
+/* CART BADGES & ICONS */
+/* ==================================== */
 .cart-badge {
   background: red;
   color: white;
@@ -139,24 +173,37 @@
 .cart-icon-desktop {
   position: relative;
   font-size: 20px;
-  margin-right: 20px;
+  /* Important: Align this icon with the hamburger and logo */
+  margin-right: 0; /* Removing the old 20px margin right */
   text-decoration: none;
-  color: black;
+  color: #fff; /* Changed to white for visibility */
 }
 
-/* Mobile Cart */
+/* Mobile Cart - Initially hidden */
 .mobile-cart {
   display: none;
 }
 
-/* SHOW mobile-cart INSIDE MOBILE MENU */
-@media (max-width: 768px) {
+/* SHOW mobile-cart and HIDE desktop cart on small screens */
+@media (max-width: 900px) {
+  /* HIDE desktop cart on mobile/tablet */
   .cart-icon-desktop {
     display: none;
   }
 
+  /* SHOW mobile cart link inside the mobile menu */
   .mobile-cart {
+    /* Display BLOCK so it shows up as a link item in the mobile menu */
     display: block;
+    /* Added to match the style of other nav links */
+    text-decoration: none;
+    color: #e7e7e7;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* Style the mobile cart item within the menu */
+  .nav-links li .mobile-cart {
     margin-top: 10px;
   }
 }

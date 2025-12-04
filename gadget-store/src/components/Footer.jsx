@@ -1,10 +1,16 @@
+// IMPORTANT: You must create a file named Footer.css (or use your main CSS file) 
+// and paste the responsive CSS code into it.
+import "../styles/footer.css"; 
 
 export default function Footer() {
   return (
-    <footer style={styles.footer}>
-      <div style={styles.container}>
+    <footer style={styles.footer} className="footer"> {/* Added className="footer" */}
+      {/* 1. APPLIED RESPONSIVE CLASS */}
+      <div className="footer-container"> 
+        
         {/* Brand */}
-        <div style={styles.col}>
+        {/* 2. APPLIED RESPONSIVE CLASS */}
+        <div className="footer-col"> 
           <h2 style={styles.logo}>ChuksGadget</h2>
           <p style={styles.text}>
             Your trusted marketplace for buying and selling quality gadgets.
@@ -12,7 +18,8 @@ export default function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div style={styles.col}>
+        {/* 2. APPLIED RESPONSIVE CLASS */}
+        <div className="footer-col"> 
           <h3 style={styles.heading}>Quick Links</h3>
           <ul style={styles.list}>
             <li style={styles.listItem}>Home</li>
@@ -22,7 +29,8 @@ export default function Footer() {
         </div>
 
         {/* Contact Info */}
-        <div style={styles.col}>
+        {/* 2. APPLIED RESPONSIVE CLASS */}
+        <div className="footer-col"> 
           <h3 style={styles.heading}>Contact Us</h3>
           <p style={styles.text}>📞 +234 810 000 0000</p>
           <p style={styles.text}>📧 support@gadgetx.com</p>
@@ -38,23 +46,16 @@ export default function Footer() {
 }
 
 const styles = {
+  // and moved to the external CSS for responsiveness.
   footer: {
     padding: "50px 20px 20px",
     background: "#0a0a0a",
     color: "white",
-    marginTop: "60px",
+    marginTop: "60px", // Margin is kept here but can be overridden by CSS media query
     borderTop: "1px solid #222",
   },
-  container: {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr 1fr",
-    gap: "40px",
-  },
-  col: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "12px",
-  },
+  // container: { REMOVED },
+  // col: { REMOVED },
   logo: {
     fontSize: "28px",
     fontWeight: "700",
