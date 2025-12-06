@@ -1,5 +1,6 @@
 import "../styles/hero.css";
 import { Link } from "react-router-dom";
+import Gadget13 from "../assets/images/Gadget 13.jpg";
 
 export default function Hero() {
   return (
@@ -23,7 +24,7 @@ export default function Hero() {
 
       {/* RIGHT SIDE IMAGE */}
       <div className="hero-image-container">
-        <img src="/hero-gadget.jpg" alt="Gadget Showcase" className="hero-image" />
+        <img src={Gadget13} alt="Gadget Showcase" className="hero-image" />
       </div>
 
     </section>

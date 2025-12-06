@@ -4,12 +4,11 @@ import "../styles/order.css";
 export default function OrderHistory() {
   const { orders } = useOrders();
 
-  if (orders.length === 0) {
+  if (!orders) {
     return (
-      <section className="history-empty">
-        <h2>No Orders Yet</h2>
-        <p>You haven't placed any orders.</p>
-      </section>
+      <h2 style={{ textAlign: "center", marginTop: "50px" }}>
+        OrderContext failed to load.
+      </h2>
     );
   }
 
@@ -21,9 +20,15 @@ export default function OrderHistory() {
         {orders.map((order) => (
           <div className="history-card" key={order.id}>
             <h3>Order #{order.id}</h3>
-            <p><strong>Date:</strong> {order.date}</p>
-            <p><strong>Status:</strong> {order.status}</p>
-            <p><strong>Total:</strong> ₦{order.total.toLocaleString()}</p>
+            <p>
+              <strong>Date:</strong> {order.date}
+            </p>
+            <p>
+              <strong>Status:</strong> {order.status}
+            </p>
+            <p>
+              <strong>Total:</strong> ₦{order.total.toLocaleString()}
+            </p>
 
             <div className="history-items">
               {order.items.map((item) => (

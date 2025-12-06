@@ -8,7 +8,7 @@ export function CartProvider({ children }) {
     try {
       const saved = localStorage.getItem("cart");
       return saved
-        ? JSON.parse(saved).map(p => ({ ...p, qty: p.qty || 1 }))
+        ? JSON.parse(saved).map((p) => ({ ...p, qty: p.qty || 1 }))
         : [];
     } catch (err) {
       console.error("Cart load error:", err);

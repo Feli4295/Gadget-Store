@@ -1,18 +1,13 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
-// 1. ➡️ NEW IMPORT: Import the custom hook from its new file
-import { useOrders } from "../hooks/useOrders"; 
+import { useOrders } from "../hooks/useOrders";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import "../styles/checkout.css";
 
 export default function Checkout() {
-  // Get cart state and setter from CartContext
   const { cart, setCart } = useContext(CartContext);
-  
-  // 2. ➡️ NEW USAGE: Use the custom hook instead of useContext(OrderContext)
-  const { addOrder } = useOrders(); 
-  
+  const { addOrder } = useOrders();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -23,31 +18,26 @@ export default function Checkout() {
   );
 
   const handleOrder = () => {
-    if (cart.length === 0) return; // Prevent empty order submission
+    if (cart.length === 0) return;
 
     setLoading(true);
 
-    // 4. SIMULATE API CALL
     setTimeout(() => {
-      // 3. CREATE THE ORDER OBJECT (moved here for correct timing)
       const newOrder = {
         id: Date.now(),
         items: cart,
-        total: total,
+        total,
         date: new Date().toLocaleString(),
         status: "Pending",
       };
 
-      // 5. SAVE the order using the context function
-      addOrder(newOrder); 
-      
-      // 6. CLEAR CART
-      setCart([]); 
-      localStorage.removeItem("cart"); 
-      
-      // Stop loading and navigate
-      setLoading(false); 
-      navigate("/success"); // Redirect to the success page
+      addOrder(newOrder);
+
+      setCart([]);
+      localStorage.removeItem("cart");
+
+      setLoading(false);
+      navigate("/success");
     }, 2000);
   };
 
@@ -55,11 +45,9 @@ export default function Checkout() {
 
   return (
     <section className="checkout-section">
-
       <h2 className="checkout-title">Checkout</h2>
 
       <div className="checkout-container">
-
         <div className="summary-box">
           <h3>Order Summary</h3>
 
@@ -88,25 +76,13 @@ export default function Checkout() {
               <input type="radio" name="payment" defaultChecked />
               <span>Pay on Delivery</span>
             </label>
-
-            <label className="payment-option">
-              <input type="radio" name="payment" disabled />
-              <span>Bank Transfer</span>
-            </label>
-
-            <label className="payment-option">
-              <input type="radio" name="payment" disabled />
-              <span>Credit/Debit Card</span>
-            </label>
           </div>
 
-          <button className="place-order-btn" onClick={handleOrder} disabled={cart.length === 0}>
+          <button className="place-order-btn" onClick={handleOrder}>
             Place Order
           </button>
         </div>
-
       </div>
-
     </section>
   );
 }
