@@ -7,7 +7,7 @@ export default function OrderHistory() {
   if (!orders) {
     return (
       <h2 style={{ textAlign: "center", marginTop: "50px" }}>
-        OrderContext failed to load.
+        OrderContext fail to load.
       </h2>
     );
   }
