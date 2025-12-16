@@ -5,7 +5,7 @@
 /* HEADER SECTION */
 .home-header {
   text-align: center;
-  /* Use a viewport-relative unit for horizontal padding (vh) */
+  /* I used a viewport-relative unit for horizontal padding (vh) */
   padding: 40px 4vw; 
 }
 
@@ -33,11 +33,11 @@
 
 .product-grid {
   display: grid;
-  /* Use viewport-relative units for gap for better mobile spacing */
+  /* I used a viewport-relative units for gap for better mobile spacing */
   gap: 4vw; 
-  /* Use viewport-relative units for padding */
+  /* I used a viewport-relative units for padding */
   padding: 20px 4vw; 
-  /* This setting is already excellent and handles responsiveness */
+  /* handles responsiveness */
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
@@ -77,14 +77,16 @@
   color: #fff;
   border-radius: 6px;
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
 /* CTA SECTION */
 .cta-section {
-  margin-top: 50px;
+  margin-top: 80px;
   text-align: center;
+  line-height: 200%;
   padding: 40px 20px;
-  background: #111;
+  background: #131313;
   color: white;
   border-radius: 10px;
   width: 90%;
@@ -100,14 +102,15 @@
   padding: 8px 20px;
   border-radius: 6px;
   font-weight: 600;
+  text-decoration: none;
 }
 .cta-btn:hover {
-  background: #f0f0f0;
+  background: #dadada;
 }
 
-/* ==================================== */
+
 /* RESPONSIVE ADJUSTMENTS FOR PHONES */
-/* ==================================== */
+
 @media (max-width: 600px) {
   /* Adjust overall spacing for tight mobile screens */
   .home {
@@ -120,7 +123,7 @@
   }
   
   .home-header h1 {
-    /* Significantly reduced size for small phones */
+    /* I significantly reduced the size for small phones */
     font-size: 1.8rem; 
   }
 
@@ -139,7 +142,7 @@
 
   /* Product Grid adjustments */
   .product-grid {
-     /* We can slightly tighten the minmax size for tiny devices */
+     /* I slightly tightened the minmax size for tiny devices */
      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 

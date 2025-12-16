@@ -33,13 +33,13 @@ export default function Footer() {
         <div className="footer-col"> 
           <h3 style={styles.heading}>Contact Us</h3>
           <p style={styles.text}>📞 +234 810 000 0000</p>
-          <p style={styles.text}>📧 support@gadgetx.com</p>
-          <p style={styles.text}>📍 Lagos, Nigeria</p>
+          <p style={styles.text}>📧 support@chuksgadget.com</p>
+          <p style={styles.text}>📍 Rivers State, Port-Harcourt Nigeria.</p>
         </div>
       </div>
 
       <div style={styles.bottomBar}>
-        <p style={styles.bottomText}>© {new Date().getFullYear()} GadgetHub. All rights reserved.</p>
+        <p style={styles.bottomText}>© {new Date().getFullYear()} ChuksGadget. All rights reserved.</p>
       </div>
     </footer>
   );

@@ -4,7 +4,7 @@
   justify-content: space-between;
   gap: 40px;
   /* Use percentage padding for general layout */
-  padding-top: 100px;
+  padding-top: 10px;
   padding-bottom: 100px;
 }
 
@@ -31,7 +31,7 @@
 .hero-subtext {
   color: #d9d9d9;
   font-size: 1.1rem;
-  margin-top: 10px;
+  margin-top: 18px;
   margin-bottom: 35px;
   line-height: 1.6;
 }
@@ -66,7 +66,7 @@
 }
 
 .hero-image {
-  width: 380px;
+  width:630px;
   height: 400px;
   border-radius: 18px;
   box-shadow: 
@@ -111,7 +111,7 @@
     flex-direction: column;
     text-align: center;
     /* Reduced vertical padding slightly for tablets */
-    padding-top: 80px;
+    padding-top: 10px;
     padding-bottom: 80px;
   }
 
@@ -121,7 +121,7 @@
   }
 
   .hero-image {
-    width: 40%;
+    height: 380px;
     max-width: 380px;
   }
 

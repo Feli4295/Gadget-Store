@@ -1,6 +1,8 @@
 .products-section {
   padding-top: 50px;
   padding-bottom: 120px;
+  animation: slideUp 0.9s ease forwards;
+
 }
 
 .products-title {
@@ -14,6 +16,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+
 }
 
 /* GRID */
@@ -81,7 +84,7 @@
   font-size: 0.9rem;
 }
 
-/* ANIMATION (Unchanged) */
+/* ANIMATION */
 @keyframes fadeUp {
   from {
     transform: translateY(20px);
@@ -93,9 +96,8 @@
   }
 }
 
-/* ==================================== */
 /* RESPONSIVE ADJUSTMENTS FOR PHONES */
-/* ==================================== */
+
 @media (max-width: 600px) {
   .products-section {
     /* Reduced vertical padding for better screen economy */
